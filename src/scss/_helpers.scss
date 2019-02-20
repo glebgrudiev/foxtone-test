@@ -1,0 +1,24 @@
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.horizontal-center {
+  @extend .flex-container;
+  justify-content: center;
+}
+
+.vertical-center {
+  @extend .flex-container;
+  align-items: center;
+}
+
+.center {
+  @extend .flex-container;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}

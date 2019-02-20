@@ -1,0 +1,69 @@
+<div class="finance-flag" *ngIf="offering.status === 'close'">
+  <span class="flag">Financé</span>
+</div>
+<div class="first-card-img" [style.background-image]="'url(' + offering.imgUrl + ')'"></div>
+<div class="card-wrapper">
+  <div class="card-header">
+    <h3>{{ offering.name }}</h3>
+    <h4>{{ offering.district }}</h4>
+  </div>
+  <div class="card-img" [style.background-image]="'url(' + offering.imgUrl + ')'"></div>
+  <div class="card-info">
+    <div class="investment-progress">
+      <div class="investment-info">
+        <span>Available to invest</span>
+        <span *ngIf="offering.financial.available_to_invest > 0">{{ offering.financial.available_to_invest | currency: 'CHF ' : 'symbol' : '1.0'}}</span>
+        <span class="completed" *ngIf="offering.financial.available_to_invest === 0">Completed</span>
+      </div>
+      <div class="progressbar">
+        <div class="progress-line"
+             [ngClass]="{'progress-complete': offering.financial.available_to_invest === 0}"
+             [style.width]="getPercentage(offering.financial)"></div>
+      </div>
+    </div>
+    <div class="offering-data">
+      <div class="part-data">
+        <div class="data-string">
+          <span>Purchase cost</span>
+          <span>{{ offering.financial.investment_goal | currency: 'CHF ' : 'symbol' : '1.0'}}</span>
+        </div>
+        <div class="data-string">
+          <span>Min. Investment</span>
+          <span>{{ offering.financial.minimum_investment | currency: 'CHF ' : 'symbol' : '1.0'}}</span>
+        </div>
+        <div class="data-string">
+          <span>Investment type</span>
+          <span [style.text-transform]="'capitalize'">{{ offering.type | replaceString }}</span>
+        </div>
+      </div>
+      <div class="part-data">
+        <div class="data-string">
+          <span>Mortage (LTV)</span>
+          <span>{{ offering.financial.loan_to_value }}%</span>
+        </div>
+        <div class="data-string">
+          <span>Holding Period</span>
+          <span>{{ offering.financial.holding_period }}</span>
+        </div>
+        <div class="data-string">
+          <span>Expected Return on Equity</span>
+          <span>{{ offering.financial.annual_yield_or_roi }}%</span>
+        </div>
+      </div>
+    </div>
+    <div class="action-block">
+      <button
+        type="button"
+        class="btn btn-progress"
+        *ngIf="offering.status !== 'close' && offering.financial.available_to_invest > 0">More details</button>
+      <button
+        type="button"
+        class="btn btn-comingSoon"
+        *ngIf="offering.status !== 'close' && offering.isComingSoon">Pre-subscribe</button>
+      <button
+        type="button"
+        class="btn btn-completed"
+        *ngIf="offering.status == 'close'">Add me to waiting list</button>
+    </div>
+  </div>
+</div>

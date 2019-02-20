@@ -1,0 +1,71 @@
+@import "../scss/variables";
+@import "../scss/helpers";
+
+.main-wrapper {
+  position: relative;
+  min-height: 100%;
+}
+
+.content {
+  position: relative;
+  margin-left: $sidenav-width;
+  min-height: 100%;
+  padding-top: $header-height;
+  background-color: #f6f7fb;
+}
+
+.offering-list {
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+@media (max-width: $small-laptop) {
+
+  .content {
+    margin-left: 0;
+  }
+
+  app-side-nav.isOpen {
+    transform: translateX(300px);
+  }
+}
+
+@media (min-width: calc(#{$tablet-landscape} + 1px)) {
+
+  app-offering-card {
+
+    &:first-child {
+      display: flex;
+      flex-basis: 100%;
+
+      .first-card-img {
+        display: block;
+      }
+
+      .card-wrapper {
+        width: 50%;
+
+        .card-img {
+          display: none;
+        }
+      }
+
+      .investment-progress {
+        padding: 20px 40px;
+      }
+
+      .offering-data {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .part-data {
+          flex-grow: 1;
+          margin: 0 20px;
+        }
+      }
+    }
+  }
+}

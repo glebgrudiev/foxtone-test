@@ -1,0 +1,205 @@
+@import "../../scss/variables";
+@import "../../scss/helpers";
+
+:host {
+  position: relative;
+  display: flex;
+  width: 32%;
+  min-height: 300px;
+  margin-bottom: 30px;
+  background-color: #fff;
+  box-shadow: 2px 3px 14px rgba(0,0,0,.24), 1px 1px 2px rgba(0,0,0,.12);
+}
+
+.first-card-img {
+  display: none;
+  width: 50%;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-wrapper {
+  width: 100%;
+}
+
+.card-header {
+  @extend .center;
+  flex-direction: column;
+  background-color: $primary-color;
+  text-transform: uppercase;
+  padding: 20px;
+  min-height: 125px;
+
+  h3 {
+    @extend .text-center;
+    color: #fff;
+    margin: 0 0 10px 0;
+    font-size: 22px;
+  }
+
+  h4 {
+    @extend .text-center;
+    color: $caption-text-color;
+    font-weight: 300;
+    margin: 0;
+    font-size: 18px;
+  }
+}
+
+.card-img {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-info {
+  color: $primary-color;
+}
+
+.investment-progress {
+  padding: 20px;
+  border-bottom: 1px solid #ebecf1;
+}
+
+.investment-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  margin-bottom: 10px;
+
+  span:last-child {
+    font-weight: 600;
+  }
+
+  .completed {
+    text-transform: uppercase;
+  }
+}
+
+.progressbar {
+  position: relative;
+  width: 100%;
+  height: 12px;
+  border-radius: 6px;
+  background-color: #ffeee4;
+
+  .progress-line {
+    position: absolute;
+    height: 12px;
+    border-radius: 6px;
+    background: linear-gradient(to right, #{$accent-color}, lighten($accent-color, 15%));
+
+    &.progress-complete {
+      background: linear-gradient(to right, #{$success-color}, lighten($success-color, 15%));
+    }
+  }
+}
+
+.data-string {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  padding: 15px 20px;
+  border-bottom: 1px solid #ebecf1;
+}
+
+.action-block {
+  @extend .center;
+  height: 100px;
+
+  .btn {
+    border: none;
+    border-radius: 4px;
+    height: 50px;
+    min-width: 200px;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .btn-progress {
+    @extend .btn;
+    background-color: $accent-color;
+    color: #fff;
+  }
+
+  .btn-comingSoon {
+    @extend .btn;
+    background-color: $success-color;
+    color: #fff;
+  }
+
+  .btn-completed {
+    @extend .btn;
+    border: 2px solid #55b99a;
+    color: $success-color;
+    background-color: #fff;
+    text-transform: capitalize;
+  }
+}
+
+.finance-flag {
+  position: absolute;
+  left: -6px;
+  top: -5px;
+  z-index: 1;
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
+  text-align: right;
+
+  .flag {
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    transform: rotate(-45deg);
+    width: 150px;
+    display: block;
+    background: linear-gradient(270deg, rgba($success-color, 1) 0%, rgba(lighten($success-color, 15%), 1) 100%);
+    box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 30px;
+    left: -30px;
+    padding: 7px 0;
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 100%;
+      z-index: -1;
+      border-left: 3px solid $success-color;
+      border-right: 3px solid transparent;
+      border-bottom: 3px solid transparent;
+      border-top: 3px solid $success-color;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 100%;
+      z-index: -1;
+      border-left: 3px solid transparent;
+      border-right: 3px solid $success-color;
+      border-bottom: 3px solid transparent;
+      border-top: 3px solid $success-color;
+    }
+  }
+}
+
+@media (max-width: $tablet-landscape) {
+
+  :host {
+    width: 48%;
+  }
+}
+
+@media (max-width: $tablet-portrait) {
+
+  :host {
+    width: 100%;
+  }
+}

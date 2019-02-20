@@ -1,0 +1,76 @@
+@import "../../scss/variables";
+@import "../../scss/helpers";
+
+:host {
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99999;
+  width: $sidenav-width;
+  height: 100%;
+  background-color: $primary-color;
+  transition: transform .3s ease-in-out;
+}
+
+.app-logo {
+  position: relative;
+  width: 100%;
+  height: 150px;
+
+  img {
+    width: 150px;
+  }
+
+  .close-btn {
+    @extend .center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    color: $caption-text-color;
+    display: none;
+
+    i {
+      cursor: pointer;
+    }
+  }
+}
+
+.nav-menu__item {
+  @extend .vertical-center;
+  height: 80px;
+  padding: 0 20px;
+  border-bottom: 1px solid #323f50;
+  color: $caption-text-color;
+  cursor: pointer;
+
+  &:first-child {
+    border-top: 1px solid #323f50;
+  }
+
+  .item-icon {
+    margin-right: 15px;
+  }
+
+  .item-title {
+    font-size: 22px;
+    text-transform: uppercase;
+  }
+}
+
+@media (max-width: $small-laptop) {
+  :host {
+    left: -300px;
+  }
+
+  .app-logo {
+
+    .close-btn {
+      display: flex;
+    }
+  }
+
+
+}
