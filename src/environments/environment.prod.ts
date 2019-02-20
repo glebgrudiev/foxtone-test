@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiPath: 'http://private-1b3550-phpbackend.apiary-mock.com'
 };

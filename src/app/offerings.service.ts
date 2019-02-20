@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
+import {environment} from '../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -25,7 +26,7 @@ export class OfferingsService {
   ) { }
 
   getOfferings() {
-    return this.http.get('http://private-1b3550-phpbackend.apiary-mock.com/offerings', httpOptions)
+    return this.http.get(`${environment.apiPath}/offerings`, httpOptions)
       .pipe(
         map(res => this.replaceImgUrls(res))
       );

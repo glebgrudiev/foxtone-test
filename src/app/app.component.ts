@@ -11,13 +11,13 @@ export class AppComponent implements OnInit {
 
   constructor(private offeringsService: OfferingsService) {}
 
+  // TODO: Need to create interface for this data
   offerings: any;
   sideNavIsOpen = false;
 
   ngOnInit(): void {
     this.offeringsService.getOfferings().subscribe(res => {
       this.offerings = res;
-      console.log(res);
     });
   }
 }
